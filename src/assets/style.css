@@ -10,7 +10,19 @@ body {
     background-size: cover;
     background-attachment: fixed;
     overflow: hidden;
+}
 
+footer{
+font-family: 'Inconsolata';
+font-size: small;
+color: #3D274E;
+text-align: center;
+position: absolute;
+bottom: 1%;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
 }
 
 .logo {
@@ -383,7 +395,7 @@ body {
 .contentPost {
     display: grid;
     width: 90%;
-    height: 62%;
+    height: 54%;
     margin-top: 246px;
     z-index: -5;
     position: absolute;
