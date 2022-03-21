@@ -1,6 +1,5 @@
 import {signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut} from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
 
-// const authLog = getAuth();
 
 export const login = (e, autenticacion) => {
     e.preventDefault();
@@ -52,13 +51,6 @@ export const loginGoogleAuth = (e, autenticacion) => {
         // console.log(errorCode, errorMessage, email, credential);
     });
 };
-
-// export const signOut = (e, autenticacion) => {
-//     e.preventDefault();
-//     signOut(autenticacion).then(() => { // Sign-out successful.
-//     }).catch((error) => { // An error happened.
-//     });
-// };
 
 const showLogErrors = (error) => {
   // const errorCode1 = validateReg;

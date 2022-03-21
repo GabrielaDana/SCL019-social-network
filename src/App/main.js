@@ -3,8 +3,8 @@ import { initRouter } from './router.js';
 
 
 const init = () => {
-  const autenticacion = initFirebase();
-  initRouter(autenticacion);
+  const {autenticacion, db} = initFirebase();
+  initRouter(autenticacion, db);
 };
 
 window.addEventListener('load', init());

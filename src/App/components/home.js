@@ -1,6 +1,8 @@
-// import { salir } from "../../lib/logFirebase";
+import { logOut, post, getPost } from "../../lib/homeFirebase.js";
 
-export const home = (autenticacion) => {
+
+export const home = (autenticacion, db) => {
+
   const homeCont = document.createElement('div');
   homeCont.className = 'homeCont';
 
@@ -16,12 +18,11 @@ export const home = (autenticacion) => {
   const homeLogout = document.createElement('button');
   homeLogout.className = 'logout';
   homeHead.appendChild(homeLogout);
-  // homeLogout.addEventListener('click', (e) => salir(e, autenticacion));
- homeLogout.addEventListener('click', (e) => {
+  homeLogout.addEventListener('click', (e) => {
     e.preventDefault();
+    logOut(autenticacion)
     window.location.hash = '#/login';
-});
-  
+  });
 
   const contPost = document.createElement ('div');
   contPost.className = 'contPost';
@@ -31,29 +32,55 @@ export const home = (autenticacion) => {
   userProfile.className = 'userProfile';
   contPost.appendChild(userProfile);
 
-  const inputPost = document.createElement('input');
-  inputPost.className = 'post';
-  inputPost.placeholder = ' Escribe tu publicación'
-  contPost.appendChild(inputPost);
+  const textPost = document.createElement('textarea');
+  textPost.className = 'post';
+  textPost.id = 'post'
+  textPost.placeholder = 'Escribe tu publicación'
+  contPost.appendChild(textPost);
 
-
-  const arrowPost = document.createElement('div');
+  const arrowPost = document.createElement('button');
   arrowPost.className = 'arrowPost';
+  arrowPost.id = 'arrowPost';
   contPost.appendChild(arrowPost);
+  arrowPost.addEventListener('click', async (e) => {
+    e.preventDefault()
+    await post(db, autenticacion)
+  });
+  arrowPost.addEventListener('click', (e) =>{
+    e.preventDefault();
+    textPost.value = '';
+  })
 
-  const anuncio = document.createElement('div');
-  anuncio.className = 'anuncio';
-  contPost.appendChild(anuncio);
+  const editButton = document.createElement('button');
+  editButton.id = 'editButton';
+  editButton.textContent = 'Guardar cambios'
+  contPost.appendChild(editButton); 
 
-  const avisoTexto = document.createElement('p');
-  avisoTexto.className = 'avisoTexto';
-  avisoTexto.textContent = 'Pagina en construcción';
-  anuncio.appendChild(avisoTexto);
+  const contentPost = document.createElement('div');
+  contentPost.className = 'contentPost';
+  contentPost.id = 'contentPost'
+  homeCont.appendChild(contentPost);
 
-  const aviso = document.createElement('img');
-  aviso.className = 'aviso';
-  aviso.src = './assets/img/working-pusheen.gif';
-  anuncio.appendChild(aviso);
+  // const deletePost = document.getElementsByClassName('deletePost');
+  // deletePost.addEventListener('click', async (e) => {
+  //   e.preventDefault()
+  //   await eliminarPost(db)
+  // });
+
+  getPost(db, autenticacion);
+  // const anuncio = document.createElement('div');
+  // anuncio.className = 'anuncio';
+  // contPost.appendChild(anuncio);
+
+  // const avisoTexto = document.createElement('p');
+  // avisoTexto.className = 'avisoTexto';
+  // avisoTexto.textContent = 'Pagina en construcción';
+  // anuncio.appendChild(avisoTexto);
+
+  // const aviso = document.createElement('img');
+  // aviso.className = 'aviso';
+  // aviso.src = './assets/img/working-pusheen.gif';
+  // anuncio.appendChild(aviso);
 
 
   return homeCont;
