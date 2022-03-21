@@ -54,7 +54,7 @@ export const googleAuth = (e, autenticacion) => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      window.location.hash='#/login';
+      window.location.hash='#/home';
       // ...
     }).catch((error) => {
       // Handle Errors here.

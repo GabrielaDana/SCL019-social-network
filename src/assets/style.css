@@ -8,7 +8,8 @@ body {
     background: linear-gradient(157.14deg, rgba(168, 227, 220, 0.47) 8.14%, rgba(173, 160, 210, 0.66) 49.9%, rgba(119, 135, 196, 0.63) 100%), #FFF7F4;
     /* background-position: 55% 30%; */
     background-size: cover;
-    height: 100%;
+    background-attachment: fixed;
+    overflow: hidden;
 
 }
 
@@ -16,16 +17,22 @@ body {
     font-family: 'Shizuru';
     color: #8E768A;
     font-size: 10vw;
-    padding: 10%;
-    padding-left: 42%;
-    padding-bottom: 8%;
+    padding: 5%;
+    padding-left: 43%;
+    padding-bottom: 7%;
     background-image: url(./img/logo2.fw.png);
     background-repeat: no-repeat;
-    background-position-x: 28%;
-    background-position-y: 57%;
+    background-position-x: 29%;
+    background-position-y: 39%;
     background-size: 16%;
 }
 
+.box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20%;
+}
 
 .boxTitle {
     z-index: 2;
@@ -233,22 +240,25 @@ body {
 
 /* Estructura home */
 
+.homeContent {
+    display: flex;
+    justify-content: center;
+}
+
 .homeCont {
     display: flex;
     justify-content: center;
-
 }
 
 .homeHead {
-    background-color: #FFEEE8;
-    width: 96%;
+    background-color: #B3C5E7;
+    width: 100%;
     height: 15%;
     z-index: 1;
-    position: absolute;
+    position: fixed;
     margin: auto;
     box-shadow: 1px 1px 5px black;
-
-
+    top: 0;
 }
 
 .homeLogo {
@@ -266,10 +276,10 @@ body {
     height: 40px;
     background-size: contain;
     background-repeat: no-repeat;
-    margin-left: 343px;
-    margin-top: -80px;
     z-index: 100;
     position: absolute;
+    top: 31%;
+    left: 85%;
 }
 
 .anuncio {
@@ -303,56 +313,176 @@ body {
 
 .contPost {
     background-color: #FFEEE8;
-    margin-top: 10em;
+    margin-top: 7em;
     width: 90%;
     height: 18%;
-    position: absolute;
+    position: fixed;
     border: solid 1px #3D274E;
     border-radius: 5px;
+
 }
 
 .userProfile {
     background-image: url('./img/userProfile.png');
-    background-size: contain;
+    background-size: 87%;
     background-repeat: no-repeat;
-    width: 60%;
+    width: 23%;
     height: 60%;
     position: absolute;
-    margin-left: 0.2em;
-    margin-top: 0.5em;
-
-
-
+    top: 6%;
+    left: 1%;
+    background-position: center;
 }
 
 .post {
-    margin-top: 0.7em;
-    margin-left: 6.4em;
     border: solid 1px #3D274E;
     border-radius: 5px;
     position: relative;
-    width: 65%;
+    width: 70%;
     height: 54%;
     z-index: 100;
     font-family: 'Inconsolata';
     font-weight: bold;
-
+    font-size: 18px;
+    top: 9%;
+    left: 25%;
+    color: #3B274B;
+    background-color: #FFFAF8;
 }
 
 .arrowPost {
     background-image: url('./img/arrowPost.png');
     background-size: contain;
     background-repeat: no-repeat;
-    width: 18%;
+    background-color: transparent;
+    border: transparent;
+    width: 10%;
     height: 18%;
-    position: relative;
-    margin-top: 0.5em;
-    margin-left: 15em;
+    position: absolute;
     cursor: pointer;
-
+    top: 74%;
+    left: 87%;
 }
 
+#editButton {
+    display: none;
+    font-family: 'Inconsolata';
+    position: relative;
+    top: 15%;
+    margin-left: 41%;
+    margin-right: auto;
+    background-color: transparent;
+    border: 1px solid #5C446D;
+    border-style: dashed;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #5C446D
+}
 
+.contentPost {
+    display: grid;
+    width: 90%;
+    height: 62%;
+    margin-top: 246px;
+    z-index: -5;
+    position: absolute;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow: scroll;
+    border-radius: 5px;
+}
+
+.posteo {
+    background-color: #FFEEE8;
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #3B274B;
+    margin: 0%;
+    border-top: 1px solid #686260;
+    border-left: 1px solid #686260;
+    border-right: 1px solid #686260;
+    box-sizing: border-box;
+    padding: 1em;
+    word-wrap: break-word;
+}
+.nameUser, .posteo, .barra{
+    width: 100%;
+}
+
+.nameUser {
+    background-color: #B2C0D9;
+    border: 1px solid #686260;
+    box-sizing: border-box;
+    border-radius: 5px 5px 0px 0px;
+    height: 100%;
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 2px;
+    text-align: center;
+    color: #3D274E;
+    padding: 1em;
+    word-wrap: break-word;
+}
+
+.barra{
+background-color: #D9D7E1;
+border: 1px solid #686260;
+box-sizing: border-box;
+border-radius: 0px 0px 5px 5px;
+height: 30px;
+margin-bottom: 20px;
+}
+
+.like{
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: #3B274B;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+.like:before,
+.like:after {
+  content: "";
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #3B274B;
+  position: absolute;
+}
+
+.like:before {
+  top: 0;
+  left: -4px;
+}
+
+.like:after {
+  top: -4px;
+}
+
+.editPost{
+font-family: 'Inconsolata';
+position: relative;
+left: 220px;
+top: -20%;
+background-color: transparent;
+border: transparent;
+}
+.deletePost{
+font-family: 'Inconsolata';
+position: relative;
+left: 200px;
+top: -20%;
+background-color: transparent;
+border: transparent;
+}
 /* color de fondo 255 247 244  */
 
 /* mediaquerys */
@@ -518,6 +648,73 @@ body {
         top: 14%;
     }
 
-    
-    
-};
+    .homeHead{
+        height: 22%;
+    }
+    .logout{
+        width: 60px;
+        height: 60px;
+        top: 35%;
+        left: 92%;
+    }
+    .contPost{
+        margin-top: 12em;
+        width: 60%;
+        height: 25%;
+    }
+
+    .userProfile{
+        background-size: 18%;
+        width: 59%;
+        height: 73%;
+        top: -1%;
+        left: -20%;
+    }
+
+    .post{
+        width: 76%;
+        left: 18%;
+    }
+
+    .contentPost{
+        margin-top: 415px;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        position: absolute;
+        width: 59%;
+        height: 46%;
+    }
+
+    .nameUser, .posteo, .barra{
+        width: 100%;
+    }
+    .deletePost{
+        left: 92%;
+        font-size: 16px;
+    }
+    .editPost{
+        left: 77%;
+        font-size: 16px;
+    }
+    .like{
+        left: 20px;
+        width: 10px;
+        height: 10px;
+    }
+      .like:before,
+      .like:after {
+        height: 10px;
+        width: 10px;
+      }
+      .like:before {
+        left: -6px;
+      }
+      .like:after {
+        top: -6px;
+      }
+      #editButton{
+        font-size: 20px;
+      }
+}

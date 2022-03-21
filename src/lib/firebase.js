@@ -1,5 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js"; 
 
 export const initFirebase = () => {
   const firebaseConfig = {
@@ -12,6 +13,13 @@ export const initFirebase = () => {
     measurementId: 'G-RY9FW6YWJ5',
   };
   initializeApp(firebaseConfig);
+  const autenticacion = getAuth();
+  const db = getFirestore();
 
-  return getAuth();
+  return {autenticacion, db};
 };
+
+// export const db = () => {
+//   return getFirestore(firebaseApp);
+// }
+
